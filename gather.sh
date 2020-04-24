@@ -3,7 +3,7 @@
 ## vars
 logFile="/var/log/auth.log"
 grepString="Received disconnect from "
-timeString=`date +'%b %d %H'`
+timeString=`date -d '1 hour ago' +'%b %d %H'`
 dateString=`date +'%b %d'`
 hour=`date +'%H'`
 outFile="$hour-failed.txt"
@@ -36,7 +36,7 @@ combine
 removeWhitelist
 
 git add gathered.txt
-git commit -m "$timeString"
-git push
+git commit -m "$timeString" > /dev/null 2>&1
+git push > /dev/null 2>&1
 # git fetch
 # git checkout master -- gathered.txt > fetched.txt
