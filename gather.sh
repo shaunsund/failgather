@@ -36,5 +36,7 @@ combine
 removeWhitelist
 
 git add gathered.txt
+git commit -m "$timeString"
+git push
 # git fetch
 # git checkout master -- gathered.txt > fetched.txt
