@@ -4,9 +4,12 @@
 logFile="/var/log/auth.log"
 grepString="Received disconnect from "
 timeString=`date -d '1 hour ago' +'%b %d %H'`
+committimeString=`date +'%b %d %H'`
 dateString=`date +'%b %d'`
 hour=`date +'%H'`
-outFile="$hour-failed.txt"
+day=`date +'%d'`
+month=`date +'%m'`
+outFile="$month$day$hour-failed.txt"
 # cat auth.log | grep "Apr 23" | grep "Received disconnect from " | awk '{print $9}'  > "$hour"-$outFile
 
 ## Functions
@@ -36,7 +39,7 @@ combine
 removeWhitelist
 
 git add gathered.txt
-git commit -m "$timeString" > /dev/null 2>&1
+git commit -m "Updates from $committimeString:00" > /dev/null 2>&1
 git push > /dev/null 2>&1
 # git fetch
 # git checkout master -- gathered.txt > fetched.txt
